@@ -25,8 +25,8 @@ class PMTree {
  private:
   std::shared_ptr<Node> root;
   size_t total_permutations;
-    
-  void buildTree(std::shared_ptr<Node> parent, const std::vector<char>& remaining);
+  void buildTree(std::shared_ptr<Node> parent,
+                const std::vector<char>& remaining);
 };
 
 std::vector<std::vector<char>> getAllPerms(const PMTree& tree);
