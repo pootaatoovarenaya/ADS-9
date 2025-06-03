@@ -1,14 +1,14 @@
 // Copyright 2022 NNTU-CS
-#include  <iostream>
-#include  <fstream>
-#include  <locale>
-#include  <cstdlib>
-#include  "tree.h"
+#include "tree.h"
 #include <algorithm>
 #include <chrono>
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
+#include <locale>
+#include <memory>
 #include <random>
 #include <vector>
-#include <memory>
 
 PMTree::PMTree(const std::vector<char>& elements) {
   if (elements.empty()) {
@@ -29,23 +29,26 @@ PMTree::PMTree(const std::vector<char>& elements) {
   }
 }
 
-void PMTree::buildTree(std::shared_ptr<Node> parent, const std::vector<char>& remaining) {
+void PMTree::buildTree(std::shared_ptr<Node> parent,
+                      const std::vector<char>& remaining) {
   for (size_t i = 0; i < remaining.size(); ++i) {
     auto child = std::make_shared<Node>(remaining[i]);
     parent->children.push_back(child);
     
     std::vector<char> new_remaining;
     new_remaining.reserve(remaining.size() - 1);
-    new_remaining.insert(new_remaining.end(), remaining.begin(), remaining.begin() + i);
-    new_remaining.insert(new_remaining.end(), remaining.begin() + i + 1, remaining.end());
+    new_remaining.insert(new_remaining.end(),
+                        remaining.begin(), remaining.begin() + i);
+    new_remaining.insert(new_remaining.end(),
+                        remaining.begin() + i + 1, remaining.end());
     
     buildTree(child, new_remaining);
   }
 }
 
 void collectPermutations(const std::shared_ptr<PMTree::Node>& node,
-                      std::vector<char>& current,
-                      std::vector<std::vector<char>>& result) {
+                        std::vector<char>& current,
+                        std::vector<std::vector<char>>& result) {
   if (node->value != '\0') {
     current.push_back(node->value);
   }
@@ -92,7 +95,8 @@ size_t factorial(size_t n) {
 }
 
 std::vector<char> getPerm2(const PMTree& tree, int num) {
-  if (num < 1 || !tree.getRoot() || static_cast<size_t>(num) > tree.getTotalPermutations()) {
+  if (num < 1 || !tree.getRoot() ||
+      static_cast<size_t>(num) > tree.getTotalPermutations()) {
     return {};
   }
   
