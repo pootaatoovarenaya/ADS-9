@@ -1,14 +1,12 @@
 // Copyright 2022 NNTU-CS
-#include "tree.h"
-#include <algorithm>
-#include <cstdlib>
-#include <chrono>
-#include <fstream>
 #include <iostream>
+#include <fstream>
 #include <locale>
+#include <cstdlib>
 #include <memory>
-#include <random>
 #include <vector>
+#include <algorithm>
+#include "tree.h"
 
 PMTree::PMTree(const std::vector<char>& elements) {
   if (elements.empty()) {
