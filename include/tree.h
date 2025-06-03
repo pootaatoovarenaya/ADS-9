@@ -6,6 +6,8 @@
 #include <vector>
 #include <memory>
 
+// PMTree class represents a permutation tree that stores all possible 
+// permutations of a given set of elements in a tree structure
 class PMTree {
 public:
     struct Node {
