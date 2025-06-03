@@ -6,27 +6,27 @@
 #include <vector>
 #include <memory>
 
-// PMTree class represents a permutation tree that stores all possible 
+// PMTree class represents a permutation tree that stores all possible
 // permutations of a given set of elements in a tree structure
 class PMTree {
-  public:
-    struct Node {
-        char value;
-        std::vector<std::shared_ptr<Node>> children;
-        explicit Node(char val) : value(val) {}
-    };
+ public:
+  struct Node {
+    char value;
+    std::vector<std::shared_ptr<Node>> children;
+    explicit Node(char val) : value(val) {}
+  };
 
-    explicit PMTree(const std::vector<char>& elements);
-    ~PMTree() = default;
+  explicit PMTree(const std::vector<char>& elements);
+  ~PMTree() = default;
 
-    std::shared_ptr<Node> getRoot() const { return root; }
-    size_t getTotalPermutations() const { return total_permutations; }
+  std::shared_ptr<Node> getRoot() const { return root; }
+  size_t getTotalPermutations() const { return total_permutations; }
 
-  private:
-    std::shared_ptr<Node> root;
-    size_t total_permutations;
+ private:
+  std::shared_ptr<Node> root;
+  size_t total_permutations;
     
-    void buildTree(std::shared_ptr<Node> parent, const std::vector<char>& remaining);
+  void buildTree(std::shared_ptr<Node> parent, const std::vector<char>& remaining);
 };
 
 std::vector<std::vector<char>> getAllPerms(const PMTree& tree);
