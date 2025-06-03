@@ -1,7 +1,7 @@
 // Copyright 2022 NNTU-CS
 #include "tree.h"
-#include <cstdlib>
 #include <algorithm>
+#include <cstdlib>
 #include <chrono>
 #include <fstream>
 #include <iostream>
@@ -114,7 +114,7 @@ std::vector<char> getPerm2(const PMTree& tree, int num) {
     if (selected >= nodes.size()) {
       return {};
     }
-  
+
     result.push_back(nodes[selected]->value);
     remaining_num %= branch_size;
     nodes = nodes[selected]->children;
