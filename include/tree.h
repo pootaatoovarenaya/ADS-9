@@ -9,7 +9,7 @@
 // PMTree class represents a permutation tree that stores all possible 
 // permutations of a given set of elements in a tree structure
 class PMTree {
-public:
+  public:
     struct Node {
         char value;
         std::vector<std::shared_ptr<Node>> children;
@@ -22,7 +22,7 @@ public:
     std::shared_ptr<Node> getRoot() const { return root; }
     size_t getTotalPermutations() const { return total_permutations; }
 
-private:
+  private:
     std::shared_ptr<Node> root;
     size_t total_permutations;
     
