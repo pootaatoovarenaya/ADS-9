@@ -19,7 +19,7 @@ PMTree::PMTree(const std::vector<char>& elements) {
 
   std::vector<char> sorted_elements = elements;
   std::sort(sorted_elements.begin(), sorted_elements.end());
-  тут
+
   root = std::make_shared<Node>('\0'); // Root node with null character
   buildTree(root, sorted_elements);
 
@@ -34,7 +34,7 @@ void PMTree::buildTree(std::shared_ptr<Node> parent,
   for (size_t i = 0; i < remaining.size(); ++i) {
     auto child = std::make_shared<Node>(remaining[i]);
     parent->children.push_back(child);
-    тут
+
     std::vector<char> new_remaining;
     new_remaining.reserve(remaining.size() - 1);
     new_remaining.insert(new_remaining.end(),
@@ -110,7 +110,7 @@ std::vector<char> getPerm2(const PMTree& tree, int num) {
     size_t n = nodes.size();
     size_t branch_size = factorial(n - 1);
     size_t selected = remaining_num / branch_size;
-    тут
+
     if (selected >= nodes.size()) {
       return {};
     }
